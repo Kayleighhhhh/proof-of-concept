@@ -18,7 +18,12 @@ app.engine('liquid', engine.express())
 app.set('views', './views')
 
 
+app.get('/', async function (request, response) {
 
+
+        // Stuur de data door naar home.liquid
+        response.render('home.liquid', { dashboardData: dashboardData });
+});
 
 app.get('/:id', async function (request, response) {
 
