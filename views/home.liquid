@@ -32,6 +32,30 @@
         </ul>
 
     </section>
+  {% for cat in dashboardData %}
+    <details class="categories">
+      <summary class="category-summary">
+        <p>{{ cat.categorieNaam }}</p>
+        <p class="v">V</p>
+      </summary>
+
+      <div class="category-content">
+        <div class="content-header">
+          <p>Actieve topics</p>
+          <p>reacties</p>
+        </div>
+
+        <ul class="topic-list">
+          {% for topic in cat.topics %}
+            <li class="topic-item">
+              <a href="{{ topic.link }}" class="topic-link">{{ topic.title }}</a>
+              <p class="topic-replies">{{ topic.replies }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </details>
+  {% endfor %}
 </main>
 
 {% render 'partials/foot.liquid' %}
