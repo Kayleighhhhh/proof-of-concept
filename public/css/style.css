@@ -28,3 +28,98 @@ body {
     }
 }
 
+
+.dashboard {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .categories {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+
+        .category-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            list-style: none;
+            /* Verbergt standaard browser pijltje */
+            cursor: pointer;
+
+            .v {
+                font-size: 1.1rem;
+                font-weight: normal;
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+
+    .category-summary::-webkit-details-marker {
+        display: none;
+        /* Verbergt standaard pijltje in Safari */
+    }
+
+    /* Als het menu opengeklapt is, draait de V  */
+    .categories[open] .v {
+        transform: rotate(180deg);
+    }
+
+    /* Content binnen het uitgeklapte menu */
+    .category-content {
+        padding: 0 20px 20px 20px;
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+
+        .topic-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .topic-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #f9f9f9;
+                padding: 12px 15px;
+                border-radius: 10px;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+
+                .topic-link {
+                    color: #000;
+                    text-decoration: none;
+                    font-weight: 500;
+                    max-width: 75%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    /* Zorgt voor de nette ... bij lange titels */
+                }
+
+                .topic-replies {
+                    font-weight: bold;
+                }
+            }
+
+        }
+
+    }
+
+}
