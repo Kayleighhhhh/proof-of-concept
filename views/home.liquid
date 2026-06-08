@@ -32,10 +32,10 @@
         </ul>
 
     </section>
-  {% for cat in dashboardData %}
+  {% for categorie in dashboardData %}
     <details class="categories">
       <summary class="category-summary">
-        <p>{{ cat.categorieNaam }}</p>
+        <p>{{ categorie.naam }}</p>
         <p class="v">V</p>
       </summary>
 
@@ -46,7 +46,7 @@
         </div>
 
         <ul class="topic-list">
-          {% for topic in cat.topics %}
+          {% for topic in categorie.items %}
             <li class="topic-item">
               <a href="{{ topic.link }}" class="topic-link">{{ topic.title }}</a>
               <p class="topic-replies">{{ topic.replies }}</p>
