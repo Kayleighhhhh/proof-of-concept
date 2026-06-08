@@ -48,7 +48,7 @@
         <ul class="topic-list">
           {% for topic in categorie.items %}
             <li class="topic-item">
-              <a href="{{ topic.link }}" class="topic-link">{{ topic.title }}</a>
+              <a href="/{{ topic.link }}" class="topic-link">{{ topic.title }}</a>
               <p class="topic-replies">{{ topic.replies }}</p>
             </li>
           {% endfor %}

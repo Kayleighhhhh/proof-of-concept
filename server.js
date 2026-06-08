@@ -40,7 +40,7 @@ app.get('/', async function (request, response) {
         for (const item of feed.items.slice(0, 5)) {
             cat.items.push({
                 title: item.title,
-                link: item.comments,
+                link: Number(item.comments.substring(item.comments.indexOf('/list_messages/') + 15).trim()),
                 replies: Number(item.description.substring(10, item.description.indexOf('\n'))),
             })
         }
@@ -57,7 +57,6 @@ app.get('/:id', async function (request, response) {
 
      const messageIdParam = 'filter[topic_id]='+ request.params.id
 
-console.log(messageIdParam)
 
     const directusResponse = await fetch("https://fdnd-agency.directus.app/items/tweakers_moderator_tags?" + messageIdParam)
     const directusResponseJSON = await directusResponse.json()
@@ -81,7 +80,7 @@ console.log(messageIdParam)
     }
 
    
-    console.log(directusResponseJSON.data)
+    //console.log(directusResponseJSON.data)
 
     response.render('detail.liquid', {
         title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
