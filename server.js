@@ -84,9 +84,8 @@ app.get('/:id', async function (request, response) {
         })
     }
 
-    //const title = title.substring(0, feed.title.indexOf(' - Geachte redactie'))
     response.render('detail.liquid', {
-        //title: title,
+        title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
         item: items[0]
     })
 })
