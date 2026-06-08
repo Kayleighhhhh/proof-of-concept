@@ -7,7 +7,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Header Styling */
 .main-header {
     display: flex;
     justify-content: space-between;
