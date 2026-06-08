@@ -44,21 +44,9 @@ app.get('/', async function (request, response) {
                 replies: Number(item.description.substring(10, item.description.indexOf('\n'))),
                 // categorieNaam: cat.naam
             })
-
-            // let replies = 0
-
-            // if (item.description && item.description.includes('Replies:')) {
-            //     // 1. Knip alles af VOOR het woord 'Replies:'
-            //     const vanafReplies = item.description.split('Replies:')[1].trim()
-
-            //     // 2. parseInt() kijkt naar de tekst, pakt het getal dat vooraan staat,
-            //     //    en negeert direct alle spaties, letters en HTML die daarna komen!
-            //     replies = parseInt(vanafReplies, 10) || 0
         }
     }
-    console.log(categorieen)
-
-
+    //console.log(categorieen)
 
     // Stuur de data door naar home.liquid
     response.render('home.liquid', { dashboardData: categorieen })
