@@ -57,12 +57,16 @@ body {
 
 .main-header {
     display: grid;
-    grid-template-columns: 1fr max-content max-content;
+    grid-template-columns: 1fr max-content;
     align-items: center;
-    gap: .5em;
     padding: 10px 20px;
     border-bottom: 2px solid var(--border-color);
     background-color: var(--brand);
+
+    @media (min-width: 400px) {
+        grid-template-columns: 1fr max-content max-content;
+        gap: .5em;
+    }
 
     @media (min-width: 768px) {
         padding: 20px 40px;
@@ -77,6 +81,11 @@ body {
     .logo-img {
         height: 4rem;
         width: auto;
+        grid-row: span 2;
+
+        @media (min-width: 400px) {
+            grid-row: unset;
+        }
 
         @media (prefers-color-scheme: dark) {
             filter: brightness(0.9);
@@ -127,6 +136,11 @@ body {
         font-size: 1rem;
         cursor: pointer;
         transition: all 0.2s ease;
+        grid-column: 2;
+
+        @media (min-width: 400px) {
+            grid-column: unset;
+        }
 
         &:hover {
             background: rgba(255, 255, 255, 0.3);
