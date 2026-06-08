@@ -83,7 +83,8 @@ app.get('/:id', async function (request, response) {
     //console.log(directusResponseJSON.data)
 
     response.render('detail.liquid', {
-        title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
+        //title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
+        title: feed.title,
         item: items[0],
         berichten: directusResponseJSON.data
     })
