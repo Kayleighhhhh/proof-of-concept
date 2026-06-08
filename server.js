@@ -42,7 +42,6 @@ app.get('/', async function (request, response) {
                 title: item.title,
                 link: item.comments,
                 replies: Number(item.description.substring(10, item.description.indexOf('\n'))),
-                // categorieNaam: cat.naam
             })
         }
     }
@@ -69,6 +68,7 @@ app.get('/:id', async function (request, response) {
             name: item.title,
             link: item.link,
             preview: item.description,
+            id: request.params.id
         })
     }
 
@@ -76,6 +76,29 @@ app.get('/:id', async function (request, response) {
         title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
         item: items[0]
     })
+})
+
+app.post('/:id', async function (request, response) {
+
+  const postResponse = await fetch("https://fdnd-agency.directus.app/items/tweakers_moderator_tags", {
+    method: "POST",
+    headers: { 
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    body: JSON.stringify({
+        topic_id: request.params.id,
+        text: request.body.text
+    })
+  })
+
+
+ if (postResponse.ok) {
+      // API zegt: Gelukt! We sturen success=true mee
+      response.redirect(303, "/" + request.params.id + "?melding=success")
+    } else {
+      // API zegt: Fout! (bijv. server error of verkeerd ID). We sturen error=true mee
+      response.redirect(303, "/" + request.params.id + "?melding=error")
+    }
 })
 
 

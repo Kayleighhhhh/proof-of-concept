@@ -1,9 +1,10 @@
 {% render 'partials/head.liquid' %}
 
 <main class="detail">
-
   <header>
-    <h1><a href="{{ item.link }}">{{title}}</a></h1>
+    <h1>
+      <a href="{{ item.link }}">{{ title }}</a>
+    </h1>
   </header>
 
   <section class="donut">
@@ -17,14 +18,21 @@
 
   <section class="message-box">
     <h2>stuur een bericht</h2>
+
     <article class="sent-messages">
       {% comment %} {% for message in messages %} {% endcomment %}
       <p>hallo</p>
     </article>
+
     <form action="/{{ item.id }}" method="POST">
-      <label for="bericht">typ hier je bericht <input type="text" id="bericht" placeholder="..." required></label>
+      <label for="text">typ hier je bericht 
+        <input type="text" id="text" name="text" placeholder="..." required>
+      </label>
+
+      <input type="hidden" name="id" value="{{ item.id }}">
       <button class="submit" type="submit">submit</button>
     </form>
+
   </section>
 </main>
 {% render 'partials/foot.liquid' %}
