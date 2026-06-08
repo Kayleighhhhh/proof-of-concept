@@ -1,12 +1,11 @@
 {% render 'partials/head.liquid' %}
 
-<main>
-  <article>
-    <h2>
-      <a href="{{ item.link }}">TITEL TOPIC</a>
-    </h2>
-    <p>{{ item.name }}</p>
-    <p>{{ item.preview }}</p>
-  </article>
+<main class="detail">
+
+  <header>
+    <h1><a href="{{ item.link }}">titel topic</a></h1>
+  </header>
+
+
 </main>
 {% render 'partials/foot.liquid' %}
