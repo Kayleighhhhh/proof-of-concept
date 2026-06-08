@@ -15,6 +15,16 @@
     <p>{{ item.preview }}</p>
   </section>
 
-
+  <section class="message-box">
+    <h2>stuur een bericht</h2>
+    <article class="sent-messages">
+      {% comment %} {% for message in messages %} {% endcomment %}
+      <p>hallo</p>
+    </article>
+    <form action="/{{ item.id }}" method="POST">
+      <label for="bericht">typ hier je bericht <input type="text" id="bericht" placeholder="..." required></label>
+      <button class="submit" type="submit">submit</button>
+    </form>
+  </section>
 </main>
 {% render 'partials/foot.liquid' %}
