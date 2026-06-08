@@ -55,6 +55,14 @@ app.get('/', async function (request, response) {
 
 app.get('/:id', async function (request, response) {
 
+     const messageIdParam = 'filter[topic_id]='+ request.params.id
+
+console.log(messageIdParam)
+
+    const directusResponse = await fetch("https://fdnd-agency.directus.app/items/tweakers_moderator_tags?" + messageIdParam)
+    const directusResponseJSON = await directusResponse.json()
+
+
     const tweakersResponse = await fetch('https://gathering.tweakers.net/rss/list_messages/' + request.params.id)
     const tweakersResponseXML = await tweakersResponse.text()
 
@@ -72,9 +80,13 @@ app.get('/:id', async function (request, response) {
         })
     }
 
+   
+    console.log(directusResponseJSON.data)
+
     response.render('detail.liquid', {
         title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
-        item: items[0]
+        item: items[0],
+        berichten: directusResponseJSON.data
     })
 })
 

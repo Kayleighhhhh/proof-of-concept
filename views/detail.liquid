@@ -20,8 +20,9 @@
     <h2>stuur een bericht</h2>
 
     <article class="sent-messages">
-      {% comment %} {% for message in messages %} {% endcomment %}
-      <p>hallo</p>
+      {% for bericht in berichten %}
+      <p>{{bericht.text}}</p>
+      {% endfor %}
     </article>
 
     <form action="/{{ item.id }}" method="POST">
