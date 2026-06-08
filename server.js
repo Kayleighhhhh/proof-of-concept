@@ -20,41 +20,75 @@ app.set('views', './views')
 
 app.get('/', async function (request, response) {
 
+    const categorieen = [
+        { naam: 'Computers', url: 'https://gathering.tweakers.net/rss/list_category_topics/2' },
+        { naam: 'Wonen en Mobiliteit', url: 'https://gathering.tweakers.net/rss/list_category_topics/21' },
+        { naam: 'Games', url: 'https://gathering.tweakers.net/rss/list_category_topics/15' },
+        { naam: 'Beeld en geluid', url: 'https://gathering.tweakers.net/rss/list_category_topics/12' },
+        { naam: 'Tablets en telefoons', url: 'https://gathering.tweakers.net/rss/list_category_topics/13' },
+        { naam: 'General chat', url: 'https://gathering.tweakers.net/rss/list_category_topics/19' }
+    ]
 
-        // Stuur de data door naar home.liquid
-        response.render('home.liquid', { dashboardData: dashboardData });
-});
+    for (const cat of categorieen) {
+        const tweakersResponse = await fetch(cat.url)
+        const tweakersResponseXML = await tweakersResponse.text()
+
+        const { format, feed } = parseFeed(tweakersResponseXML)
+
+        cat.items = []
+
+        for (const item of feed.items.slice(0, 5)) {
+            cat.items.push({
+                title: item.title,
+                link: item.comments,
+                replies: Number(item.description.substring(10, item.description.indexOf('\n'))),
+                // categorieNaam: cat.naam
+            })
+
+            // let replies = 0
+
+            // if (item.description && item.description.includes('Replies:')) {
+            //     // 1. Knip alles af VOOR het woord 'Replies:'
+            //     const vanafReplies = item.description.split('Replies:')[1].trim()
+
+            //     // 2. parseInt() kijkt naar de tekst, pakt het getal dat vooraan staat,
+            //     //    en negeert direct alle spaties, letters en HTML die daarna komen!
+            //     replies = parseInt(vanafReplies, 10) || 0
+        }
+    }
+    console.log(categorieen)
+
+
+
+    // Stuur de data door naar home.liquid
+    response.render('home.liquid', { dashboardData: categorieen })
+})
+
+
 
 app.get('/:id', async function (request, response) {
 
-  const tweakersResponse = await fetch('https://gathering.tweakers.net/rss/list_messages/' + request.params.id)
-  const tweakersResponseXML = await tweakersResponse.text()
+    const tweakersResponse = await fetch('https://gathering.tweakers.net/rss/list_messages/' + request.params.id)
+    const tweakersResponseXML = await tweakersResponse.text()
 
-  const { format, feed } = parseFeed(tweakersResponseXML)
-//  console.log(feed) // Om te debuggen
+    const { format, feed } = parseFeed(tweakersResponseXML)
+    //console.log(feed.title.substring(0, feed.title.indexOf(' - Geachte redactie'))) // Om te debuggen
 
-  const items = []
-  for (const item of feed.items) {
-    items.push({
-      name: item.title,
-      link: item.link,
-      preview: item.description,
+
+    const items = []
+    for (const item of feed.items) {
+        items.push({
+            name: item.title,
+            link: item.link,
+            preview: item.description,
+        })
+    }
+
+    //const title = title.substring(0, feed.title.indexOf(' - Geachte redactie'))
+    response.render('detail.liquid', {
+        //title: title,
+        item: items[0]
     })
-  }
-
-// const channels = feed?.channels || [];
-//   for (const channel of feed.channels) {
-//     channels.push({
-//       title: channel.title,
-//     })
-//   }
-// // console.log(channel)
-
-//   console.log(items)
-
-  response.render('detail.liquid', {item: items[0], 
-    //channel: channels[0]
-  })
 })
 
 
@@ -64,6 +98,6 @@ app.set('port', process.env.PORT || 8000)
 
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console
-  console.log(`http://localhost:${app.get('port')}/`)
+    // Toon een bericht in de console
+    console.log(`http://localhost:${app.get('port')}/`)
 })
