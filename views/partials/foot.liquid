@@ -1,2 +1,22 @@
+    <script>
+
+        const knop = document.getElementById('neonToggle')
+        const pagina = document.documentElement
+
+        knop.addEventListener('click', () => {
+            if (pagina.getAttribute('data-theme') === 'neon') {
+
+                pagina.removeAttribute('data-theme');
+                localStorage.setItem('neonStand', 'uit')
+                knop.classList.remove('active')
+            } else {
+
+                pagina.setAttribute('data-theme', 'neon')
+                localStorage.setItem('neonStand', 'aan')
+                knop.classList.add('active')
+            }
+        })
+    </script>
+    
     </body>
 </html>
