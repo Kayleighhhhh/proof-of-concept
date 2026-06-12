@@ -68,6 +68,21 @@ app.get('/:id', async function (request, response) {
     const { format, feed } = parseFeed(tweakersResponseXML)
     //console.log(feed.title.substring(0, feed.title.indexOf(' - Geachte redactie'))) // Om te debuggen
 
+    const people = [];
+
+  feed.items.forEach(item => {
+    people.push(item.title);
+  });
+
+  const peopleWithCounts = Object.entries(
+    people.reduce((acc, name) => {
+      acc[name] = (acc[name] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([name, count]) => ({ name, count }));
+
+
+    //console.log(peopleWithCounts);
 
     const items = []
     for (const item of feed.items) {
@@ -86,6 +101,7 @@ app.get('/:id', async function (request, response) {
         //title: feed.title.substring(0, feed.title.indexOf(' - Geachte redactie')),
         title: feed.title,
         item: items[0],
+        peopleCount: peopleWithCounts,
         berichten: directusResponseJSON.data
     })
 })

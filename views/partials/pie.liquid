@@ -1,0 +1,27 @@
+{% assign totalValue = 0.0 %}
+{% assign value = values %}
+{% assign name = names %}
+
+{% for item in chartData limit: limit %}
+  {% assign totalValue = totalValue | plus: item[value] %}
+{% endfor %}
+
+<article class="pie-chart">
+  <header class="pie-header">
+    <h2 class="heading-chart">Piechart</h2>
+    <p class="pie-total">Totaal aantal gebruikers: <strong>{{ totalValue | round }}</strong></p>
+  </header>
+
+  {% assign huidige_start = 0.0 %}
+
+  {% for item in chartData limit: limit %}
+    {% assign procent = item[value] | divided_by: totalValue | times: 100.0 %}
+    {% assign item_hue = forloop.index0 | times: 60 | modulo: 360 %}
+
+    <p class="pie-point" style="--procent: {{ procent }}; --start: {{ huidige_start }}; --hue: {{ item_hue }};">
+      <strong>{{ item.name }}</strong> ({{ procent | round: 1 }}%)
+    </p>
+
+    {% assign huidige_start = huidige_start | plus: procent %}
+  {% endfor %}
+</article>

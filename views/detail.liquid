@@ -8,7 +8,7 @@
   </header>
 
   <section class="donut">
-    <img src="/assets/donutplaceholder.png" width="250">
+    {% render 'partials/pie.liquid', chartData: peopleCount, names: 'name', values: 'count', limit: 10 %}
   </section>
 
   <section class="preview">
