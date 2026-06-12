@@ -4,8 +4,8 @@
 
     <section class="active-topics category-content categories">
         <div class="content-header">
-        <p>Alle Actieve topics</p>
-        <p>Reacties</p>
+        <h1 class="headings">Alle Actieve topics</h1>
+        <h2 class="headings">Reacties</h2>
         </div>
 
         <ul class="topic-list">
@@ -35,14 +35,14 @@
   {% for categorie in dashboardData %}
     <details class="categories">
       <summary class="category-summary">
-        <p>{{ categorie.naam }}</p>
+        <h2 class="headings">{{ categorie.naam }}</h2>
         <p class="v">V</p>
       </summary>
 
       <div class="category-content">
         <div class="content-header">
-          <p>Actieve topics</p>
-          <p>reacties</p>
+          <h3 class="headings">Actieve topics</h3>
+          <h3 class="headings">reacties</h3>
         </div>
 
         <ul class="topic-list">
