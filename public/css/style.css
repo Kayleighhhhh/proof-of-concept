@@ -87,10 +87,6 @@ body {
             grid-row: unset;
         }
 
-        @media (prefers-color-scheme: dark) {
-            filter: brightness(0.9);
-        }
-
         html[data-theme="neon"] & {
             filter: drop-shadow(0 0 10px #ffffff) brightness(1.2);
         }
