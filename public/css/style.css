@@ -384,96 +384,109 @@ body {
                 opacity: 0.5;
             }
         }
+
+        form {
+            display: flex;
+            justify-content: space-around;
+
+            .submit {
+                color: var(--text-color);
+                font-family: inherit;
+                font-size: 1rem;
+                padding: 8px 16px;
+                border-radius: 8px;
+                border: 1px solid var(--text-color);
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
     }
 }
 
 .pie-chart {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  margin: 2rem auto;
-  position: relative;
-  padding-top: 15rem; 
-
-
-
-  &::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 12.5rem;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    z-index: 1;
-  }
-
-  .pie-header {
-    margin-bottom: 1rem;
-    z-index: 3;
-
-    .heading-chart {
-      margin: 0 0 0.25rem 0;
-      font-size: 1.5rem;
-      color: var(--text-color);
-    }
-
-    .pie-total {
-      margin: 0;
-      color: var(--text-color);
-      font-size: 0.95rem;
-    }
-  }
-
-  .pie-point {
     display: flex;
-    align-items: center;
-    margin: 0.4rem 0;
-    font-size: 0.95rem;
-    color: var(--text-color);
-    z-index: 3;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin: 2rem auto;
+    position: relative;
+    padding-top: 15rem;
 
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 0.75rem;
-      height: 0.75rem;
-      margin-right: 0.5rem;
-      background-color: hsl(var(--hue), 75%, 50%);
-      border-radius: 0.2rem;
-    }
+
 
     &::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: 12.5rem;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      z-index: 2;
-      background: conic-gradient(
-        transparent 0%,
-        transparent calc(var(--start) * 1%),
-        hsl(var(--hue), 75%, 52%) calc(var(--start) * 1%),
-        hsl(var(--hue), 75%, 52%) calc((var(--start) + var(--procent)) * 1%),
-        transparent calc((var(--start) + var(--procent)) * 1%),
-        transparent 100%
-      );
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        width: 12.5rem;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        z-index: 1;
     }
-  }
 
-  @media (min-width: 500px) {
-    padding-top: 0;
-    padding-left: 15rem; 
+    .pie-header {
+        margin-bottom: 1rem;
+        z-index: 3;
 
-    &::after,
-    .pie-point::after {
-      left: 0;
-      transform: none;
+        .heading-chart {
+            margin: 0 0 0.25rem 0;
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .pie-total {
+            margin: 0;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
     }
-  }
+
+    .pie-point {
+        display: flex;
+        align-items: center;
+        margin: 0.4rem 0;
+        font-size: 0.95rem;
+        color: var(--text-color);
+        z-index: 3;
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-right: 0.5rem;
+            background-color: hsl(var(--hue), 75%, 50%);
+            border-radius: 0.2rem;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 12.5rem;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            z-index: 2;
+            background: conic-gradient(transparent 0%,
+                    transparent calc(var(--start) * 1%),
+                    hsl(var(--hue), 75%, 52%) calc(var(--start) * 1%),
+                    hsl(var(--hue), 75%, 52%) calc((var(--start) + var(--procent)) * 1%),
+                    transparent calc((var(--start) + var(--procent)) * 1%),
+                    transparent 100%);
+        }
+    }
+
+    @media (min-width: 500px) {
+        padding-top: 0;
+        padding-left: 15rem;
+
+        &::after,
+        .pie-point::after {
+            left: 0;
+            transform: none;
+        }
+    }
 }
