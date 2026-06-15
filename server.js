@@ -129,6 +129,11 @@ app.post('/:id', async function (request, response) {
     }
 })
 
+app.use((req, res, next) => {
+
+  res.status(404).render('error.liquid')
+})
+
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80

@@ -338,6 +338,16 @@ body {
         align-items: center;
         grid-column: 1;
         grid-row: 2 / span 2;
+
+        @media (min-width: 500px) {
+            align-items: baseline;
+            min-height: 17rem;
+        }
+
+        @media (min-width: 768px) {
+            align-items: center;
+
+        }
     }
 
     section {
@@ -488,5 +498,34 @@ body {
             left: 0;
             transform: none;
         }
+    }
+}
+
+.error {
+    h1 {
+        justify-self: center;
+    }
+
+    a {
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        margin: 2em;
+    }
+
+    picture {
+        justify-content: center;
+        display: flex;
+
+        img {
+            width: 400px;
+            height: auto;
+
+            html[data-theme="neon"] & {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--card-shadow);
+            }
+        }
+
     }
 }
