@@ -8,6 +8,7 @@
   </header>
 
   <section class="donut">
+    <h2 style="display: none;">pie chart</h2>
     {% render 'partials/pie.liquid', chartData: peopleCount, names: 'name', values: 'count', limit: 10 %}
   </section>
 
@@ -25,7 +26,7 @@
       {% endfor %}
     </article>
 
-    <form action="/{{ item.id }}" method="POST">
+    <form action="/{{ item.id }}" method="POST" class="form">
       <label for="text"
         >typ hier je bericht
         <input type="text" id="text" name="text" placeholder="..." required>
@@ -36,4 +37,45 @@
     </form>
   </section>
 </main>
+
+<script type="module">
+
+    const form = document.querySelector(".form")
+    const button = form.querySelector("button")
+    const berichten = document.querySelector(".sent-messages")
+
+    const originalButtonText = button.textContent
+
+    form.addEventListener("submit", async function(event) {
+
+        event.preventDefault()
+
+        button.classList.add("loading")
+        button.textContent = "laden..."
+
+        let formData = new FormData(form);
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: new URLSearchParams(formData)
+        })
+
+        const responseData = await response.text()
+
+        const parser = new DOMParser()
+        const responseDOM = parser.parseFromString(responseData, 'text/html')
+
+        const newState = responseDOM.querySelector(".sent-messages")
+
+        berichten.innerHTML = newState.innerHTML
+
+        console.log("Loading state weghalen")
+        button.classList.remove("loading")
+        button.textContent = "gelukt!✅"
+
+        setTimeout(() => {
+          button.textContent = originalButtonText
+        }, 1000)
+    })
+</script>
 {% render 'partials/foot.liquid' %}
