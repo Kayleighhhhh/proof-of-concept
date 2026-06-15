@@ -21,19 +21,19 @@
 
     <article class="sent-messages">
       {% for bericht in berichten %}
-      <p>{{bericht.text}}</p>
+        <p>{{ bericht.text }}</p>
       {% endfor %}
     </article>
 
     <form action="/{{ item.id }}" method="POST">
-      <label for="text">typ hier je bericht 
+      <label for="text"
+        >typ hier je bericht
         <input type="text" id="text" name="text" placeholder="..." required>
       </label>
 
       <input type="hidden" name="id" value="{{ item.id }}">
       <button class="submit" type="submit">submit</button>
     </form>
-
   </section>
 </main>
 {% render 'partials/foot.liquid' %}
