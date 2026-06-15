@@ -3,9 +3,9 @@
     --text-color: #000000;
     --border-color: #dddddd;
     --card-bg: #ffffff;
-    --card-shadow: rgba(0, 0, 0, 0.15);
+    --card-shadow: #00000026;
     --item-bg: #f9f9f9;
-    --item-shadow: rgba(0, 0, 0, 0.05);
+    --item-shadow: #0000000d;
     --border-light: #eeeeee;
 
     --brand: #A11236;
@@ -17,9 +17,9 @@
         --text-color: #e0e0e0;
         --border-color: #333333;
         --card-bg: #1e1e1e;
-        --card-shadow: rgba(0, 0, 0, 0.5);
+        --card-shadow: #00000080;
         --item-bg: #2a2a2a;
-        --item-shadow: rgba(0, 0, 0, 0.2);
+        --item-shadow: #00000033;
         --border-light: #2c2c2c;
 
         --brand: #7a0b27;
@@ -32,9 +32,9 @@
         --text-color: #ffffff;
         --border-color: transparent;
         --card-bg: #0b0b0f;
-        --card-shadow: 0 0 35px rgb(255, 45, 175), 0 0 50px rgb(0, 238, 255);
+        --card-shadow: 0 0 35px #ff2daf, 0 0 50px #00eeff;
         --item-bg: #12121a;
-        --item-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+        --item-shadow: inset 0 0 10px #ffffff0d;
         --border-light: #ff007f;
 
         --brand: #ff007f;
