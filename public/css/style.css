@@ -46,17 +46,17 @@
 
 }
 
-   @view-transition {
+@view-transition {
     navigation: auto;
-    }
-    
-    :root {
-    view-transition-name: none;
-    }
+}
 
-    ::view-transition-group(.vt-name) {
+:root {
+    view-transition-name: none;
+}
+
+::view-transition-group(.vt-name) {
     animation-duration: .2s;
-    }
+}
 
 body {
     font-family: 'IBM Plex Sans', sans-serif;
