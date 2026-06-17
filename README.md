@@ -24,7 +24,7 @@ Bij het bouwen van de frontend stonden progressive enhancement en performance op
 1. Progressive Enhancement
 De basis van de site (de content en de routes) werkt altijd, ongeacht de browser of het apparaat. Moderne features zijn gelaagd toegevoegd als extra luxe:
 
-- Vloeiende overgangen: In de CSS is de @view-transition { navigation: auto; } regel gebruikt. Browsers die dit al ondersteunen laten een vloeiende animatie zien wanneer je van het dashboard naar een detailpagina navigeert. Oudere browsers negeren dit en laden de pagina op de normale manier zonder dat er iets breekt.
+- view transition: In de CSS is de @view-transition { navigation: auto; } regel gebruikt. Browsers die dit al ondersteunen laten een vloeiende animatie zien wanneer je van het dashboard naar een detailpagina navigeert. Oudere browsers negeren dit en laden de pagina op de normale manier zonder dat er iets breekt.
 
 - Dark mode: Via @media (prefers-color-scheme: dark) verandert de interface automatisch mee met de systeemvoorkeur van de gebruiker, zonder dat daar JavaScript voor nodig is.
 
@@ -32,10 +32,10 @@ De basis van de site (de content en de routes) werkt altijd, ongeacht de browser
 
 ---
 
-2. Mobile-First & Flexibele Lay-outs
-De website is vanaf de eerste regel mobiel opgebouwd. Er is gekozen voor een flexibele opzet met relatieve eenheden (em en rem) en flexibele breedtes. Vaste pixels en max-width zijn weggelaten zodat de lay-out vloeiend mee beweegt.
+2. Mobile-First & breakpoints
+De website is vanaf de eerste regel mobiel opgebouwd. Er is gekozen voor een flexibele opzet met eenheden zoals em en rem en flexibele breedtes. Vaste pixels en max-width zijn weggelaten zodat de lay-out vloeiend mee beweegt.
 
-- Mobiele basis: Componenten starten met een simpele verticale flow (display: flex; flex-direction: column;).
+- mobile first: Componenten starten met een simpele verticale flow (display: flex; flex-direction: column;).
 
 - breakpoints: Pas wanneer het scherm breder wordt, verandert de lay-out mee via media queries. Vanaf 768px splitst het dashboard zich op in een grid met twee kolommen, en vanaf 1024px groeit dit door naar drie kolommen (grid-template-columns: repeat(3, 1fr);). Door margin: 0 auto; te gebruiken blijft alles op brede desktopschermen netjes gecentreerd.
 
@@ -44,7 +44,7 @@ De website is vanaf de eerste regel mobiel opgebouwd. Er is gekozen voor een fle
 3. CSS Nesting & Custom Properties
 De styling is geschreven met moderne CSS technieken. Door slim gebruik te maken van CSS nesting en custom properties blijft de stylesheet overzichtelijk en makkelijk te onderhouden.
 
-- Native CSS Nesting: Binnen componenten zoals .main-header en .dashboard zijn de media queries en hover-states direct binnen de selector genest. Dit houdt de code overzichtelijk en zorgt ervoor dat alle styling van een specifiek onderdeel netjes op een plek bij elkaar staat.
+- CSS Nesting: Binnen componenten zoals .main-header en .dashboard zijn de media queries en hover-states direct binnen de selector genest. Dit houdt de code overzichtelijk en zorgt ervoor dat alle styling van een specifiek onderdeel netjes op een plek bij elkaar staat.
 
 - custom properties in de :root : Alle kleuren schaduwen en thema's staan gedefinieerd in de :root. Hierdoor kan de website tussen light mode, dark mode en het neon thema switchen door simpelweg de waardes van de variabelen aan te passen. Dit voorkomt dubbele code en houdt de stylesheet netjes.
 
