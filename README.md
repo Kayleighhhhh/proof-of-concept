@@ -1,7 +1,3 @@
-Ontwerp en maak een data driven online concept voor een opdrachtgever
-
-De instructies voor deze opdracht staan in: [docs/INSTRUCTIONS.md](https://github.com/fdnd-task/proof-of-concept/blob/main/docs/INSTRUCTIONS.md)
-
 # Tweakers Community Dashboard
 Een interactief, mobile-first dashboard dat RSS feeds en een dynamische grafiek van de Tweakers forums laat zien op een overzichtelijke website.
 
