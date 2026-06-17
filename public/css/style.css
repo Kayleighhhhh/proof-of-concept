@@ -189,6 +189,8 @@ body {
 
     .headings {
         font-size: 1.05em;
+        display: grid;
+        grid-template-columns: 1fr min-content;
     }
 
     @media (min-width: 768px) {
@@ -227,13 +229,10 @@ body {
         }
 
         .category-summary {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr min-content;
             padding: .3em 1em;
             font-size: 1.3rem;
-            font-weight: bold;
-            list-style: none;
             cursor: pointer;
             background-color: var(--card-bg);
 
@@ -249,10 +248,12 @@ body {
                 background-clip: text;
             }
 
-            .v {
+            ::after {
+                content: "v";
                 font-size: 1.1rem;
                 font-weight: normal;
                 transition: transform 0.2s ease;
+                grid-column: 2;
 
                 html[data-theme="neon"] & {
                     -webkit-text-fill-color: #00f0ff;
@@ -262,11 +263,7 @@ body {
         }
     }
 
-    .category-summary::-webkit-details-marker {
-        display: none;
-    }
-
-    .categories[open] .v {
+    details[open] h2::after {
         transform: rotate(180deg);
     }
 
