@@ -112,24 +112,26 @@ body {
         padding: 8px 16px;
         border-radius: 8px;
         border: 1px solid #ffffff;
-        background: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
 
         @media (min-width: 1024px) {
             font-size: 1.1rem;
         }
 
         &:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
+            transition: 0.2s;
         }
 
         html[data-theme="neon"] & {
-            background: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.4);
 
             &:hover {
                 box-shadow: 0 0 15px #ff007f;
                 border-color: #ff007f;
                 text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+                transition: 0.2s;
             }
         }
     }
@@ -138,7 +140,7 @@ body {
         padding: 8px 16px;
         border-radius: 8px;
         border: 1px solid #ffffff;
-        background: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.2);
         color: var(--text-color);
         font-family: inherit;
         font-size: 1rem;
@@ -151,8 +153,9 @@ body {
         }
 
         &:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
+            transition: 0.2s;
         }
 
         &.active {
@@ -166,12 +169,13 @@ body {
         }
 
         html[data-theme="neon"] & {
-            background: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.4);
 
             &:hover {
                 box-shadow: 0 0 15px #ff007f;
                 border-color: #ff007f;
                 text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+                transition: 0.2s;
             }
         }
     }
@@ -201,7 +205,7 @@ body {
     }
 
     .categories {
-        background: var(--card-bg);
+        background-color: var(--card-bg);
         border-radius: 20px;
         box-shadow: 0 4px 15px var(--card-shadow);
         overflow: hidden;
@@ -231,7 +235,12 @@ body {
             font-weight: bold;
             list-style: none;
             cursor: pointer;
-            background: var(--card-bg);
+            background-color: var(--card-bg);
+
+            &:hover {
+                transform: scale(1.03);
+                transition: 0.2s;
+            }
 
             html[data-theme="neon"] & {
                 background: linear-gradient(90deg, #ffffff 10%, #00f0ff 100%);
@@ -286,7 +295,7 @@ body {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: var(--item-bg);
+                background-color: var(--item-bg);
                 padding: 12px 15px;
                 border-radius: 10px;
                 box-shadow: inset 0 1px 3px var(--item-shadow);
@@ -302,6 +311,11 @@ body {
 
                     html[data-theme="neon"] & {
                         font-weight: 600;
+                    }
+
+                    &:hover {
+                        transform: scale(1.03);
+                        transition: 0.2s;
                     }
                 }
 
@@ -341,6 +355,11 @@ body {
         a {
             color: var(--text-color);
             text-decoration: none;
+
+            &:hover {
+                transform: scale(1.05);
+                transition: 0.2s;
+            }
         }
     }
 
@@ -363,7 +382,7 @@ body {
     }
 
     section {
-        background: var(--card-bg);
+        background-color: var(--card-bg);
         border-radius: 20px;
         box-shadow: 0 4px 15px var(--card-shadow);
         padding: 1em;
@@ -387,7 +406,7 @@ body {
 
         .sent-messages {
             width: auto;
-            background: var(--item-bg);
+            background-color: var(--item-bg);
             border-radius: 20px;
             box-shadow: inset 0 1px 3px var(--item-shadow);
             padding: 1em;
@@ -395,7 +414,7 @@ body {
         }
 
         input[type="text"] {
-            background: var(--item-bg);
+            background-color: var(--item-bg);
             color: var(--text-color);
             border: 1px solid var(--border-light);
             padding: 8px;
@@ -418,7 +437,13 @@ body {
                 padding: 8px 16px;
                 border-radius: 8px;
                 border: 1px solid var(--text-color);
-                background: rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 0.2);
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.3);
+                    transform: scale(1.05);
+                    transition: 0.2s;
+                }
             }
         }
     }
