@@ -181,6 +181,10 @@ body {
     }
 }
 
+html[data-theme="neon"] h2::after {
+            color: #00f0ff;
+        }
+
 .dashboard {
     padding: 20px;
     display: flex;
@@ -248,19 +252,11 @@ body {
                 transition: transform 0.2s ease;
                 grid-column: 2;
 
-                &html[data-theme="neon"] & {
-                    color: #00f0ff;
-                    text-shadow: 0 0 8px #00f0ff;
-                }
             }
         }
 
         &[open] h2::after {
             transform: rotate(180deg);
-        }
-
-        html[data-theme="neon"] h2::after {
-            color: #00f0ff;
         }
     }
 
